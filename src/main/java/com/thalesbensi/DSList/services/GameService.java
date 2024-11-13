@@ -4,6 +4,7 @@ package com.thalesbensi.DSList.services;
 import com.thalesbensi.DSList.dto.GameDTO;
 import com.thalesbensi.DSList.dto.GameMinDTO;
 import com.thalesbensi.DSList.entities.Game;
+import com.thalesbensi.DSList.projections.GameMinProjection;
 import com.thalesbensi.DSList.repositories.GameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,6 +29,12 @@ public class GameService {
     public GameDTO findbyId(Long id){
        Game item = gameRepository.findById(id).get();
         return new GameDTO(item);
+    }
+
+    @Transactional(readOnly = true)
+    public List<GameMinDTO> findByList(Long listid){
+        List<GameMinProjection> dto = gameRepository.searchByList(listid);
+        return dto.stream().map(x -> new GameMinDTO(x)).toList();//Converte o tipo Games para DTO
     }
 
 }
