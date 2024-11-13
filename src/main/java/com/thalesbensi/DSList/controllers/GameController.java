@@ -1,5 +1,6 @@
 package com.thalesbensi.DSList.controllers;
 
+import com.thalesbensi.DSList.dto.GameMinDTO;
 import com.thalesbensi.DSList.entities.Game;
 import com.thalesbensi.DSList.services.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,7 @@ public class GameController {
     private GameService gameService;
 
     @GetMapping
-    public List<Game> findAll(){
+    public List<GameMinDTO> findAll(){
        return gameService.findAll();
     }
 
