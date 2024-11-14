@@ -36,5 +36,4 @@ public class GameService {
         List<GameMinProjection> dto = gameRepository.searchByList(listid);
         return dto.stream().map(x -> new GameMinDTO(x)).toList();//Converte o tipo Games para DTO
     }
-
 }

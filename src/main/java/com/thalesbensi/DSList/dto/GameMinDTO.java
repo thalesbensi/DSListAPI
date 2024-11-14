@@ -31,5 +31,4 @@ public class GameMinDTO {
 		imgUrl = projection.getImgUrl();
 		shortDescription = projection.getShortDescription();
 	}
-
 }
